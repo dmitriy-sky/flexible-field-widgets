@@ -1,0 +1,39 @@
+{% from "components/image/image.twig" import image %}
+
+{% if widget.background.type == 'custom' %}
+  {% set color = 'style="background-color:'~ widget.background.color ~'"' %}
+{% endif %}
+
+<div class="lhl-ways-cards" {{ color }}>
+  <h2 class="lhl-ways-cards-title">
+    {{ widget.title }}
+  </h2>
+
+  {% for card in widget.cards %}
+    {% if card.background.type == 'custom' %}
+      {% set card_color = 'style="background-color:'~ card.background.color ~'"' %}
+    {% endif %}
+    <div class="lhl-ways-cards-card" lhl-element="animated" {{ card_color }}>
+      {% if card.icon.type == 'image' %}
+        <div class="lhl-ways-cards-image">
+          {{ image({ src: Image(card.icon.image).src, alt: Image(card.icon.image).alt, classes: ["lhl-ways-cards-icon"] }) }}
+        </div>
+      {% endif %}
+      <div class="lhl-ways-cards-card-top">
+        <h3 class="lhl-ways-cards-card-title">
+          {{ card.title }}
+        </h3>
+      </div>
+      <div class="lhl-ways-cards-content">
+        <div class="lhl-ways-cards-content-item">
+          <h4 class="lhl-ways-cards-content-title">Issue</h4>
+          {{ card.issue }}
+        </div>
+        <div class="lhl-ways-cards-content-item">
+          <h4 class="lhl-ways-cards-content-title">Solution</h4>
+            {{ card.solution }}
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>

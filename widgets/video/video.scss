@@ -1,0 +1,30 @@
+.lhl-video {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 105px 0 89px 0;
+
+  .lhl-video-code {
+    width: 100%;
+    max-width: 942px;
+    margin: 0 auto;
+  }
+
+  iframe {
+    @media (max-width: $breakpoint-md) {
+      height: 450px !important;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      height: 350px !important;
+    }
+
+    @media (max-width: $breakpoint-xs) {
+      height: 250px !important;
+    }
+  }
+
+  video {
+    width: 100%;
+  }
+}

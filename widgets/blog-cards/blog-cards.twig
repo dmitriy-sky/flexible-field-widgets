@@ -1,0 +1,42 @@
+{% from "components/image/image.twig" import image %}
+{% from "components/button/button.twig" import button %}
+{% from "components/anchor/anchor.twig" import anchor %}
+
+
+{% set slug = '/' ~ post.slug %}
+<div class="lhl-blog-cards" lhl-element="blog-cards">
+  <div class="lhl-blog-cards-container" lhl-element="blog-list">
+    {% if posts|length > 0 %}
+      {% for post in posts %}
+        {% set img = Image(post.meta('hero_image')) %}
+        {% set label = post.meta('hero_label') %}
+        {% set summary = post.meta('hero_summary') %}
+        {% set placeholder = '/wp-content/themes/lighthouse/assets/img/news_horizontal_placeholder.png' %}
+
+        <article class="lhl-blog-cards-item lhl-card" lhl-element="animated">
+          <a href="{{ post.link }}" class="lhl-blog-cards-item-link">
+            <div class="lhl-blog-cards-item-image" 
+            style="background-image: url({{img.src ? img.src : placeholder}})">
+            </div>
+          </a>
+          <div class="lhl-blog-cards-item-info">
+            <div class="lhl-blog-cards-item-inner">
+                {% set categories = post.terms('category') %}
+                <p class="lhl-blog-cards-item-lead-in">{% if categories|length == 0 %}{{ label }}{% endif %}{% for category in categories %}<a class="lhl-anchor" href="{{ slug ~ '?term=' ~ category.slug }}">{{ category.name }}</a>{% if not loop.last %}<span>{{', '}}</span>{% endif %}{% endfor %}</p>
+                <h3 class="lhl-blog-cards-item-title"><a href="{{ post.link }}">{{ post.title }}</a></h3>
+                <p class="lhl-blog-cards-item-summary">{{ summary }}</p>
+                <span class="lhl-blog-cards-item-spacer"></span>
+                <div class="lhl-blog-cards-item-date">{{ image({ src: '/wp-content/themes/lighthouse/assets/img/clock.png', alt: 'Clock', classes: ['lhl-blog-cards-item-icon'] }) }} <span>{{ post.post_date | date('F d, Y') }}</span></div>
+            </div>
+          </div>
+        </article>
+      {% endfor %}
+    {% else %}
+        <p>No results found</p>
+    {% endif %}
+  </div>
+
+  {% if posts|length == 6 %}
+    {{ button({ text: 'LOAD MORE', style: 'secondary', 'lhl-element': 'blog-more', loader: true, 'data-exclude': featured_id ? featured_id : "0", 'data-term': term }) }}
+  {% endif %}
+</div>

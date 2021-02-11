@@ -1,0 +1,20 @@
+{% if widget.colors.type == 'custom' %}
+  {% set color = 'style="background-color:'~ widget.colors.background ~'"' %}
+{% endif %}
+
+<div class="lhl-banner" {{ color }}>
+  <div class="lhl-banner-container">
+    {% if widget.type == 'single' %}
+      <div class="lhl-banner-content" lhl-element="animated">
+        {{ widget.content }}
+      </div>
+    {% elseif widget.type == 'double' %}
+      <div class="lhl-banner-left lhl-animated-left" lhl-element="animated">
+        {{ widget.left }}
+      </div>
+      <div class="lhl-banner-right lhl-animated-left" lhl-element="animated">
+        {{ widget.right }}
+      </div>
+    {% endif %}
+  </div>
+</div>

@@ -1,0 +1,80 @@
+{% set share_url = function('get_permalink', post.ID) %}
+
+<div class="lhl-social-sharing">
+  <div class="lhl-social-sharing-container">
+    <h2 class="lhl-social-sharing-title">{{ widget.title }}</h2>
+  </div>
+  <div class="lhl-social-sharing-container">
+    {% if widget.facebook == '1' %}
+      <a
+        class="lhl-social-sharing-icon lhl-social-sharing-facebook"
+        style="background-image: url('/wp-content/themes/lighthouse/assets/icons/facebook.svg');"
+      ></a>
+      <script>
+        window.fbAsyncInit = () => {
+          if (!window.fbLoaded) {
+            window.fbLoader = true;
+            FB.init({
+              appId: '{{ options.facebook_app_id }}',
+              autoLogAppEvents : true,
+              xfbml: true,
+              version: 'v7.0'
+            }); 
+
+            var $buttons = document.getElementsByClassName('lhl-social-sharing-facebook');
+            for (var i = 0; i < $buttons.length; i++) {
+              $buttons[i].addEventListener('click', function () {
+                FB.ui({
+                  method: 'share',
+                  href: window.location.href,
+                }, function (res) {
+                  console.log(res);
+                });
+              });
+            }
+          }
+        }
+      </script>
+    {% endif %}
+    {% if widget.twitter == '1' %}
+      <a class="lhl-social-sharing-icon lhl-social-sharing-twitter" 
+        target="_blank" 
+        style="background-image: url('/wp-content/themes/lighthouse/assets/icons/twitter.svg');" 
+        href="https://twitter.com/intent/tweet?text={{ post.title }}&url={{ share_url }}"
+      >
+      </a>
+    {% endif %}
+    {% if widget.pinterest == '1' %}
+      <script
+        type="text/javascript"
+        async defer
+        src="//assets.pinterest.com/js/pinit.js"
+      ></script>
+      <a href="https://www.pinterest.com/pin/create/button/"
+        class="lhl-social-sharing-icon lhl-social-sharing-pinterest"
+        style="background-image: url('/wp-content/themes/lighthouse/assets/icons/pinterest.svg');" 
+        data-pin-do="buttonPin"
+        data-pin-media="{{ post_image.src }}"
+        data-pin-custom="true">
+      </a>
+    {% endif %}
+    {% if widget.linkedin == '1' %}
+      <style>
+        .IN-widget button {
+          background-image: url('/wp-content/themes/lighthouse/assets/icons/linkedin-in.svg');
+          color: transparent !important;
+        }
+
+        .lhl-social-sharing .lhl-social-sharing-container .IN-widget button:hover {
+          background-color: transparent !important;
+        }
+
+        .IN-widget button * {
+          display: none !important;
+        }
+      </style>
+      <script src="https://platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
+      <script type="IN/Share" data-url="{{ share_url }}"></script>
+    {% endif %}
+  </div>
+</div>

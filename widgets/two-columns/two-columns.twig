@@ -1,0 +1,14 @@
+{% set color = widget.colors.type == 'custom' ? 'style="background-color:'~ widget.colors.background ~'"' : '' %}
+
+<div class="lhl-two-columns" {{ color }}>
+  <div class="lhl-two-columns-column lhl-two-columns-column--left lhl-animated-left" lhl-element="animated">
+    <div class="lhl-two-columns-column-inner">
+      {{ widget.left }}
+    </div>
+  </div>
+  <div class="lhl-two-columns-column lhl-two-columns-column--right lhl-animated-right" lhl-element="animated">
+    <div class="lhl-two-columns-column-inner">
+      {{ widget.right }}
+    </div>
+  </div>
+</div>

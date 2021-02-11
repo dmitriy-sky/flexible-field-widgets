@@ -1,0 +1,32 @@
+.lhl-social-sharing {
+  padding: 0 20px 0 20px;
+  margin: 85px 0;
+
+  &-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &-title {
+    font-size: 2.4rem;
+    line-height: 1;
+    margin: 0 0 20px 0;
+  }
+  
+  .IN-widget button, &-icon {
+    background-color: transparent !important;
+    background-size: 20px 20px !important;
+    border-radius: 50% !important;
+    border: 1px solid $color-08 !important;
+    height: 58px !important;
+    width: 58px !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    cursor: pointer;
+
+    &:not(:last-child) {
+      margin-right: 15px;
+    }
+  }
+}

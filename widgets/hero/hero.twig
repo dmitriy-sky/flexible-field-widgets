@@ -1,0 +1,43 @@
+{% from "components/image/image.twig" import image %}
+{% from "components/anchor/anchor.twig" import anchor %}
+
+{% set image = widget.image %}
+{% set title = widget.title %}
+{% set img = Image(image) %}
+
+<div class="lhl-hero {{ type }}">
+  <div class="lhl-hero-mobile"> 
+    <h1 class="lhl-hero-title">
+      {{ title }}
+    </h1>
+    <div class="lhl-hero-description">
+      {{ widget.description }}
+    </div>
+  </div>
+  <div class="lhl-hero-inner lhl-hero-desktop">
+    <div class="lhl-hero-img" style="background-image: url({{ img.src ? img.src : defaultImg }})"></div>
+    <div class="lhl-hero-content">
+      <div class="lhl-hero-container">
+        <div class="lhl-hero-block" lhl-element="animated" {{ widget.colors.type == 'custom' ? 'style="background-color:'~ widget.colors.background ~'"' : '' }}>
+          <h1 class="lhl-hero-title">
+            {{ title }}
+          </h1>
+          <div class="lhl-hero-description">
+            {{ widget.description }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% if widget.logos %}
+    <div class="lhl-hero-logos">
+      <div class="lhl-hero-logos-container">
+        {% for logo in widget.logos %}
+          {% set image = Image(logo.item) %}
+          <div class="lhl-hero-logos-item" style="background-image:url({{image.src}})">
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+</div>

@@ -1,0 +1,68 @@
+.lhl-case-examples {
+  font-family: $font-main;
+
+  &-title {
+    padding: 40px 20px;
+    font-size: 4.1rem;
+    background-color: $color-03;
+    text-align: center;
+  }
+
+  &-cards {
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: $breakpoint-md) {
+      flex-direction: row;
+    }
+  }
+
+  &-img {
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    height: 460px;
+    width: 100%;
+
+    @media (min-width: $breakpoint-md) {
+      height: 625px;
+    }
+  }
+
+  &-card {
+    position: relative;
+    flex: 1;
+  }
+
+  &-content {
+    background-color: $color-02;
+    padding: 30px 26px;
+    bottom: 0;
+    right: 0;
+    font-weight: $bold;
+    color: $color-18;
+
+    &-item {
+      font-size: 1.8rem;
+      margin: 10px 0;
+    }
+    
+    &-last-value {
+      font-size: 4rem;
+      margin: 20px 0 10px;
+    }
+
+    &-last-label {
+      font-size: 2.3rem;
+      margin: 10px 0;
+    }
+
+    @media (min-width: $breakpoint-md) {
+      position: absolute;
+    }
+  }
+
+  p {
+    color: $color-01;
+  }
+}

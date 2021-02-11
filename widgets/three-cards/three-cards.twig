@@ -1,0 +1,36 @@
+{% from "components/image/image.twig" import image %}
+
+<div class="lhl-three-cards" {{ widget.colors.type == 'custom' ? 'style="background-color:'~ widget.colors.background ~'"' : '' }}>
+  <div class="lhl-three-cards-top">
+    <h2 class="lhl-three-cards-title">{{ widget.title }}</h2>
+    {% if widget.top == 'enable' %}
+      <div class="lhl-three-cards-description">{{ widget.description }}</div>  
+    {% endif %}
+  </div>
+  
+  <div class="lhl-three-cards-items">
+    {% for card in widget.cards %}
+      {% if card.background.type == 'custom' %}
+        {% set card_color = 'style="background-color:'~ card.background.color ~'"' %}
+      {% endif %}
+      <div class="lhl-three-cards-card lhl-card" lhl-element="animated" {{ card_color }}>
+        <div class="lhl-three-cards-image">
+          {% if card.icon.type == 'number' %}
+            {{ card.icon.number }}
+          {% elseif card.icon.type == 'image' %}
+            {{ image({ 
+              src: Image(card.icon.image).src, 
+              alt: Image(card.icon.image).alt, 
+              classes: ["lhl-three-cards-icon"] }) 
+            }}
+          {% endif %}
+        </div>
+        <h3 class="lhl-three-cards-card-title">{{ card.title }}</h3>
+        <div class="lhl-three-cards-card-text">{{ card.description }}</div>
+      </div>
+    {% endfor %}
+    {% if widget.bottom == 'on' %}
+      {{ widget.content }}
+    {% endif %}
+  </div>
+</div>

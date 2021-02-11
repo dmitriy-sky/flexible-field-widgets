@@ -1,0 +1,165 @@
+.lhl-accordion {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  
+  @media (min-width: $breakpoint-sm) {
+    flex-direction: row;
+  }
+
+  &-left {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+
+    @media (min-width: $breakpoint-sm) {
+      width: 58%;
+    }
+
+    @media (min-width: $breakpoint-lg) {
+      margin-right: 120px;
+      max-width: 600px;
+    }
+
+    &-description {
+      font-size: 1.8rem;
+      color: $color-08;
+
+      @media (min-width: $breakpoint-lg) {
+        max-width: 470px;
+        line-height: 2.8rem;
+      }
+    }
+    
+    &-title {
+      font-size: 4.1rem;
+      margin-bottom: 40px;
+    }
+  }
+
+  &-btn {
+    position: absolute;
+    background: $color-03;
+    left: 0;
+    top: -5px;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $color-05;
+    }
+
+    &:before {
+      content: '';
+      width: 16px;
+      height: 2px;
+      background: $color-02;
+      display: block;
+      position: absolute;
+      left: 11px;
+      top: 18px;
+    }
+
+    &:after {
+      content: '';
+      width: 2px;
+      height: 16px;
+      background: $color-02;
+      display: block;
+      position: absolute;
+      left: 18px;
+      top: 11px;
+    }
+  }
+
+  &-right {
+    width: 100%;
+    background-color: $color-06;
+    padding: 20px;
+    box-sizing: border-box;
+
+    @media (min-width: $breakpoint-sm) {
+      width: 42%;
+    }
+
+    @media (min-width: $breakpoint-lg) {
+      padding: 45px 72px;
+    }
+
+    &-list {
+      list-style-type: none;
+      padding: 0;
+
+      &-item {
+        padding-left: 64px;
+        position: relative;
+      }
+
+      &-title {
+        font-size: 2.3rem;
+        line-height: 3rem;
+        margin: 40px 0 20px;
+        cursor: pointer;
+        font-weight: 500;
+      }
+
+      &-text {
+        font-size: 1.8rem;
+        line-height: 3rem;
+        color: $color-08;
+        display: none;
+        animation: slideDown 2s;
+        overflow: hidden;
+        max-height: 600px;
+      }
+
+      @keyframes slideDown {
+        from {
+          opacity: 0.5;
+          max-height: 0;
+        }
+        to {
+          opacity: 1;
+          max-height: 600px;
+        }
+      }
+
+      .expand {
+        .lhl-accordion-btn {
+          &:hover {
+            background-color: $color-03;
+          }
+
+          &:after {
+            display: none;
+          }
+        }
+
+        .lhl-accordion-right-list-title {
+          cursor: default;
+        }
+
+        .lhl-accordion-right-list-text {
+          display: block;
+        }
+      }
+    }
+    
+    &-description {
+      max-width: 470px;
+      font-size: 2rem;
+      color: $color-08;
+      line-height: 3rem;
+    }
+  
+    &-title {
+      font-size: 3rem;
+      margin-bottom: 25px;
+    }
+  }
+}

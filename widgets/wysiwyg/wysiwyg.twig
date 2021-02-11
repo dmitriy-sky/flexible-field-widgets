@@ -1,0 +1,9 @@
+{% if post.post_type == 'page' %}
+  {% set content = widget.wysiwyg %}
+{% else %}
+  {% set content = widget.wysiwyg  %}
+{% endif %}
+
+<div class="lhl-wysiwyg" lhl-element="wysiwyg animated">
+  {{ content }}
+</div>

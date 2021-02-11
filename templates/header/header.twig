@@ -1,0 +1,73 @@
+{% from "components/image/image.twig" import image %}
+{% from "components/anchor/anchor.twig" import anchor %}
+
+{% set logo_color = Image(options.color_logo) %}
+{% set logo_mark = Image(options.logo_mark) %}
+{% set logo_alt = options.company_name %}
+{% set post_site = get_active_site(post.site, post.post_name, post.post_type) %}
+{% set nav_menus = post_site == 'fp' ? [menu_fp] : [menu_po] %}
+
+<header class="lhl-header" lhl-element="header" lhl-site="{{ post_site }}">
+  <nav class="lhl-header-nav">
+    <div class="lhl-header-top" lhl-element="header-top">
+      <div class="lhl-header-top-container">
+        <ul class="lhl-header-top-menu">
+          {% for menu_item in menu_top.items %}
+            <li class="lhl-header-top-menu-item {{ 'po' in menu_item.classes or 'fp' in menu_item.classes ? '' : 'lhl-header-top-menu-item--mobile ' }}{{ menu_item.classes|join(' ') }}">
+                <a class="lhl-header-top-menu-link {{ menu_item.classes|join(' ') }} {{ post_site in menu_item.classes or (post_site is empty and loop.index == 1) ? 'active' : '' }}" data-href="{{ menu_item.slug }}" lhl-element="{{ loop.index > 2 ? '' : 'header-nav-item' }}" href="{{ menu_item.link }}">{{ menu_item.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="lhl-header-bottom" lhl-element="header-bottom">
+      <div class="lhl-header-bottom-container">
+        <a class="lhl-header-logo lhl-anchor" href="{{ site.link }}">
+          {{ image({ src: logo_color.src, alt: logo_alt }) }}
+          {{ image({ src: logo_mark.src, alt: logo_alt, classes: ['sp-no-webp'] }) }}
+        </a>
+        {% for menu_item in menu_top.items %}
+          {% if 'mobile-button' in menu_item.classes %}
+            <a class="lhl-header-top-menu-link {{ menu_item.classes|join(' ') }} {{ post_site in menu_item.classes or (post_site is empty and loop.index == 1) ? 'active' : '' }}" data-href="{{ menu_item.slug }}" lhl-element="{{ loop.index > 2 ? '' : 'header-nav-item' }}" href="{{ menu_item.link }}">{{ menu_item.title }}</a>
+          {% endif %}
+        {% endfor %}
+        {% for menu in nav_menus %}
+          {% for menu_item in menu.get_items %}
+            {% if 'mobile-button' in menu_item.classes %}
+              {{ anchor({ text: menu_item.title, target: menu_item.target, href: menu_item.url, classes: ['lhl-button--default'] }) }}
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+        <button class="lhl-header-mobile-button" lhl-element="header-mobile-button">
+        </button>
+        <div class="lhl-header-menus" lhl-element="header-nav-menus">
+          {% for menu in nav_menus %}
+            <ul class="lhl-header-menu lhl-header-main-menu {{ loop.index == 1 ? 'active' : '' }}" lhl-element="header-nav-menu" id="{{ menu.slug }}">
+              {% for menu_item in menu.get_items %}
+                <li class="lhl-header-menu-item {{ menu_item.classes|join(' ') }}">
+                  {{ anchor({ text: menu_item.title, target: menu_item.target, href: menu_item.url, classes: menu_item.classes | merge(is_sub_page(post.post_type, menu_item.url) ? ['current_page_item'] : [] ) }) }}
+                  {% if menu_item.children %}
+                    <ul class="lhl-header-sub-menu">
+                      {% for child_menu_item in menu_item.children %}
+                        <li class="lhl-header-sub-menu-item {{ child_menu_item.classes|join(' ') }}">
+                          {{ anchor({ text: child_menu_item.title, target: child_menu_item.target, href: child_menu_item.url, classes: [] }) }}
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+                </li>
+              {% endfor %}
+              {% for menu_item in menu_top.items %}
+                {% if 'mobile-nav' in menu_item.classes %}
+                  <li class="lhl-header-menu-item  {{ menu_item.classes|join(' ') }}">
+                      {{ anchor({ text: menu_item.title, target: menu_item.target, href: menu_item.link, classes: menu_item.classes | merge(['lhl-header-menu-item--mobile']) }) }}
+                  </li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,49 @@
+{% extends "templates/base/base.twig" %}
+
+{% block content %}
+  <div class="lhl-page">
+    {% for widget in post.meta('widgets') %}
+      {% if widget.acf_fc_layout == 'hero' %}
+        {% include 'widgets/hero/hero.twig' %}
+      {% elseif widget.acf_fc_layout == 'form' %}
+        {% include 'widgets/form/form.twig' %}
+      {% elseif widget.acf_fc_layout == 'heading' %}
+        {% include 'widgets/heading/heading.twig' %}
+      {% elseif widget.acf_fc_layout == 'wysiwyg' %}
+        {% include 'widgets/wysiwyg/wysiwyg.twig' %}
+      {% elseif widget.acf_fc_layout == 'calendly' %}
+        {% include 'widgets/calendly/calendly.twig' %}
+      {% elseif widget.acf_fc_layout == 'accordion' %}
+        {% include 'widgets/accordion/accordion.twig' %}
+      {% elseif widget.acf_fc_layout == 'banner' %}
+        {% include 'widgets/banner/banner.twig' %}
+      {% elseif widget.acf_fc_layout == 'frame' %}
+        {% include 'widgets/frame/frame.twig' %}
+      {% elseif widget.acf_fc_layout == 'framed_list' %}
+        {% include 'widgets/framed-list/framed-list.twig' %}
+      {% elseif widget.acf_fc_layout == 'team' %}
+        {% include 'widgets/team/team.twig' %}
+      {% elseif widget.acf_fc_layout == 'two_columns' %}
+        {% include 'widgets/two-columns/two-columns.twig' %}
+      {% elseif widget.acf_fc_layout == 'image_columns' %}
+        {% include 'widgets/image-columns/image-columns.twig' %}
+      {% elseif widget.acf_fc_layout == 'form_columns' %}
+        {% include 'widgets/form-columns/form-columns.twig' %}
+      {% elseif widget.acf_fc_layout == 'life_cards' %}
+        {% include 'widgets/life-cards/life-cards.twig' %}
+      {% elseif widget.acf_fc_layout == 'three_cards' %}
+        {% include 'widgets/three-cards/three-cards.twig' %}
+      {% elseif widget.acf_fc_layout == 'ways_cards' %}
+        {% include 'widgets/ways-cards/ways-cards.twig' %}
+      {% elseif widget.acf_fc_layout == 'resources_cards' %}
+        {% include 'widgets/resources-cards/resources-cards.twig' %}
+      {% elseif widget.acf_fc_layout == 'case_examples' %}
+        {% include 'widgets/case-examples/case-examples.twig' %}
+      {% elseif widget.acf_fc_layout == 'info_violator' %}
+        {% include 'widgets/info-violator/info-violator.twig' %}
+      {% elseif widget.acf_fc_layout == 'violator' %}
+        {% include 'widgets/violator/violator.twig' %}
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endblock %}

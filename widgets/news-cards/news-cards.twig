@@ -1,0 +1,42 @@
+{% from "components/image/image.twig" import image %}
+{% from "components/button/button.twig" import button %}
+{% from "components/anchor/anchor.twig" import anchor %}
+
+{% set slug = '/' ~ post.slug %}
+<div class="lhl-news-cards" lhl-element="news-cards">
+  <div class="lhl-news-cards-container" lhl-element="news-list">
+    {% if posts|length > 0 %}
+      {% for post in posts %}
+        {% set img = Image(post.meta('hero_image')) %}
+        {% set label = post.meta('hero_label') %}
+        {% set summary = post.meta('hero_summary') %}
+        {% set placeholder = '/wp-content/themes/lighthouse/assets/img/news_horizontal_placeholder.png' %}
+        <article class="lhl-news-cards-item" lhl-element="animated">
+          <div class="lhl-news-cards-item-info">
+            <div class="lhl-news-cards-item-inner">
+                {% set categories = post.terms('category') %}
+                <p class="lhl-news-cards-item-lead-in">{% if categories|length == 0 %}{{ label }}{% endif %}{% for category in categories %}<a class="lhl-anchor" href="{{ slug ~ '?term=' ~ category.slug }}">{{ category.name }}</a>{% if not loop.last %}<span>{{', '}}</span>{% endif %}{% endfor %}</p>
+                <h3 class="lhl-news-cards-item-title"><a href="{{ post.link }}">{{ post.title }}</a></h3>
+                <p class="lhl-news-cards-item-summary">{{ summary }}</p>
+                <div class="lhl-news-cards-item-date">{{ image({ src: '/wp-content/themes/lighthouse/assets/img/clock.png', alt: 'Clock', classes: ['lhl-news-cards-item-icon'] }) }} <span>{{ post.post_date | date('F d, Y') }}</span></div>
+            </div>
+          </div>
+          <a href="{{ post.link }}" class="lhl-news-cards-item-link">
+            {{ 
+              image({ classes: ['lhl-news-cards-item-image'],
+                src: img.src ? img.src : placeholder,
+                alt: img.alt
+              }) 
+            }}
+          </a>
+        </article>
+      {% endfor %}
+    {% else %}
+        <p>No results found</p>
+    {% endif %}
+  </div>
+
+  {% if posts|length == 4 %}
+    {{ button({ text: 'LOAD MORE', style: 'secondary', 'lhl-element': 'load-more', loader: true, 'data-exclude': featured_id ? featured_id : "0", 'data-term': term }) }}
+  {% endif %}
+</div>

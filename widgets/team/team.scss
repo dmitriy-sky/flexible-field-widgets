@@ -1,0 +1,86 @@
+.lhl-team {
+  max-width: 980px;
+  margin: 0 auto;
+  font-family: $font-main;
+  
+  @media (min-width: $breakpoint-sm) {
+    margin: 90px auto;
+  }
+
+  &-title {
+    text-align: center;
+    font-size: 4.1rem;
+    line-height: 5.2rem;
+
+    @media (min-width: $breakpoint-sm) {
+      margin-bottom: 60px;
+    }
+  }
+
+  &-member {
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: $breakpoint-sm) {
+      flex-direction: row;
+      margin: 20px 0;
+    }
+  }
+
+  img.lhl-team-img {
+    max-width: 362px;
+    height: 362px;
+    object-fit: cover;
+    box-sizing: border-box;
+    
+    &--desktop {
+      display: none;
+
+      @media (min-width: $breakpoint-sm) {
+        display: block;
+        padding: 20px;
+      }
+    }
+
+    &--mobile {
+      display: block;
+      align-self: flex-start;
+      width: 100%;
+
+      @media (min-width: $breakpoint-sm) {
+        display: none;
+      }
+    }
+  }
+  
+  &-info {
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  &-name {
+    font-size: 3rem;
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
+
+  &-position {
+    font-size: 2.3rem;
+    color: $color-05;
+
+    &:after {
+      content: '';
+      height: 6px;
+      width: 80px;
+      display: block;
+      margin: 24px 0;
+      background: $color-03;
+    }
+  }
+
+  &-biography {
+    font-size: 1.8rem;
+    line-height: 2.8rem;
+    color: $color-08;
+  }
+}

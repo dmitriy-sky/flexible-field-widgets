@@ -1,0 +1,88 @@
+.lhl-three-cards {
+  font-family: $font-main;
+  background: $color-09;
+  padding-bottom: 20px;
+
+  @media (min-width: $breakpoint-sm) {
+    padding-bottom: 90px;
+  }
+
+  &-top {
+    max-width: 600px;
+    padding: 20px;
+    margin: 0 auto;
+    text-align: center;
+
+    @media (min-width: $breakpoint-sm) {
+      padding: 50px 20px;
+    }
+  }
+
+  &-image {
+    width: 52px;
+    height: 52px;
+    background: $color-03;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto;
+  }
+
+  &-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+  }
+
+  &-title {
+    font-size: 4.1rem;
+    text-align: center;
+  }
+
+  &-description {
+    font-size: 1.8rem;
+    line-height: 2.8rem;
+    color: $color-08;
+  }
+  
+  &-items {
+    display: flex;
+    max-width: $container-width;
+    margin: 0 auto;
+    flex-direction: column;
+
+    @media (min-width: $breakpoint-sm) {
+      flex-direction: row;
+    }
+  }
+
+  &-card {
+    margin: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.13);
+    padding: 20px 20px 30px;
+    background: $color-02;
+
+    @media (min-width: $breakpoint-sm) {
+      width: 100%;
+      max-width: 353px;
+      margin: 0 20px;
+    }
+
+    &-title {
+      font-size: 2.3rem;
+      line-height: 2.8rem;
+      margin: 0;
+      text-align: center;
+      font-weight: $medium;
+    }
+
+    &-text {
+      font-size: 1.8rem;
+      line-height: 2.8rem;
+      color: $color-08;
+      margin-top: 10px;
+      text-align: center;
+    }
+  }
+}

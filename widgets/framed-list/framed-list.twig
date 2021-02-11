@@ -1,0 +1,27 @@
+{% from "components/image/image.twig" import image %}
+
+<div class="lhl-framed-list lhl-framed-list-{{ widget.background }}" {{ widget.background is not empty ? 'style="background-color:'~ widget.background ~'"' : '' }}>
+  <div class="lhl-framed-list-container">
+    <div class="lhl-framed-list-left lhl-animated-left" lhl-element="animated">
+      <div class="lhl-framed-list-description">
+        {{ widget.left }}
+      </div>
+      {{ image({ src: Image(widget.image).src, alt: Image(widget.image).alt, classes: ["lhl-framed-list-img"] }) }}
+    </div>
+    <div class="lhl-framed-list-right lhl-animated-right" lhl-element="animated">
+      <div class="lhl-framed-list-content" {{ widget.card_background is not empty ? 'style="background-color:'~ widget.card_background ~'"' : '' }}>
+        {% for item in widget.right  %}
+          <div class="lhl-framed-list-item">
+            <div class="lhl-framed-list-col">
+              <div class="lhl-framed-list-icon">{{ loop.index }}</div>
+            </div>
+            <div class="lhl-framed-list-info">
+              <h3 class="lhl-framed-list-item-title">{{ item.title }}</h3>
+              <div class="lhl-framed-list-item-description">{{ item.description }}</div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+{% from "components/image/image.twig" import image %}
+
+<div class="lhl-life-cards">
+  
+  <div class="lhl-life-cards-heading">
+    {% if widget.icon %}
+      <div class="lhl-life-cards-sign">
+        {{ image({ src: '/wp-content/themes/lighthouse/assets/img/info.png', alt: 'Info icon', classes: ['lhl-life-cards-icon'] }) }}
+      </div>
+    {% endif %}
+    <div class="lhl-life-cards-info">
+      <h2 class="lhl-life-cards-title">{{ widget.title }}</h2>
+      <div class="lhl-life-cards-description">
+        {{ widget.description }}
+      </div>
+    </div>
+  </div>
+
+  <div class="lhl-life-cards-lists">
+    <ul class="lhl-life-cards-list">
+      {% for card in widget.cards %}
+        {% if loop.index % 2 != 0 %}
+          <li class="lhl-life-cards-list-item lhl-animated-left" lhl-element="animated" {{ card.colors.type == 'custom' ? 'style="background-color:'~ card.colors.background ~'"' : '' }}>
+            <div class="lhl-life-cards-list-item-content">
+              <h3 class="lhl-life-cards-list-item-title">{{ card.title }}</h3>
+              <p class="lhl-life-cards-list-item-description">{{ card.description }}</p>
+            </div>
+          </li>
+        {% else %}
+          <li class="lhl-life-cards-list-item lhl-animated-left lhl-life-cards-list-item--mobile" lhl-element="animated" {{ card.colors.type == 'custom' ? 'style="background-color:'~ card.colors.background ~'"' : '' }}>
+            <div class="lhl-life-cards-list-item-content">
+              <h3 class="lhl-life-cards-list-item-title">{{ card.title }}</h3>
+              <p class="lhl-life-cards-list-item-description">{{ card.description }}</p>
+            </div>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+    <ul class="lhl-life-cards-list lhl-life-cards-list--tablet">
+      {% for card in widget.cards %}
+        {% if loop.index % 2 == 0 %}
+          <li class="lhl-life-cards-list-item lhl-animated-right" lhl-element="animated" {{ card.colors.type == 'custom' ? 'style="background-color:'~ card.colors.background ~'"' : '' }}>
+            <div class="lhl-life-cards-list-item-content">
+              <h3 class="lhl-life-cards-list-item-title">{{ card.title }}</h3>
+              <p class="lhl-life-cards-list-item-description">{{ card.description }}</p>
+            </div>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+</div>

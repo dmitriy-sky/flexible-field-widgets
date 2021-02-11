@@ -1,0 +1,10 @@
+{% from "components/anchor/anchor.twig" import anchor %}
+
+<div class="lhl-info-violator">
+  <div class="lhl-info-violator-container">
+    <h2 class="lhl-info-violator-description">{{ widget.description }}</h2>
+    <div class="lhl-info-violator-cta">
+      {{ anchor({ text: widget.cta_label, href: widget.cta_url , classes: ['lhl-info-violator-link'] }) }}
+    </div>
+  </div>
+</div>

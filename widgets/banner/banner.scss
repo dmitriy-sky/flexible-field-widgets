@@ -1,0 +1,85 @@
+.lhl-banner {
+  padding: 25px 5px;
+
+  @media (min-width: $breakpoint-sm) {
+    padding: 50px 5px;
+  }
+
+  &-container {
+    display: flex;
+    max-width: 870px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    font-family: $font-main;
+    flex-direction: column;
+
+    @media (min-width: $breakpoint-sm) {
+      flex-direction: row;
+    }
+
+    h2 {
+      font-weight: $medium;
+    }
+  }
+
+  &-left {
+    padding: 0 15px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  &-right {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    padding: 0 15px;
+    box-sizing: border-box;
+
+    @media (min-width: $breakpoint-sm) {
+      font-size: 2.2rem;
+      line-height: 3.4rem;
+    }
+
+    p {
+      color: $color-01;
+    }
+  }
+  
+  &-heading {
+    margin: 0;
+    font-size: 6.5rem;
+    font-weight: $medium;
+    line-height: 6.2rem;
+    min-width: 330px;
+
+    @media (min-width: $breakpoint-sm) {
+      font-size: 12.5rem;
+      line-height: 11.2rem;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      text-align: center !important;
+    }
+  }
+
+  &-subheading {
+    margin: 0;
+    font-size: 2.6rem;
+    font-weight: $medium;
+    line-height: 1;
+
+    @media (min-width: $breakpoint-sm) {
+      font-size: 4.9rem;
+      font-weight: $medium;
+      line-height: 1;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      text-align: center !important;
+    }
+  }
+}

@@ -1,0 +1,114 @@
+.lhl-life-cards {
+  padding: 20px;
+
+  &-heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-items: stretch;
+    max-width: 628px;
+    width: 100%;
+    margin: 75px auto 58px auto;
+
+    @media (min-width: $breakpoint-sm) {
+      flex-direction: row;
+    }
+  }
+
+  &-title {
+    margin: 5px 0 40px 0;
+    text-align: center;
+
+    @media (min-width: $breakpoint-sm) {
+      text-align: left;
+    }
+  }
+
+  &-description {
+    color: $color-08;
+    line-height: 3rem;
+
+    p {
+      margin: 0 0 10px 0;
+    }
+  }
+
+  &-sign {
+    display: flex;
+    justify-content: center;
+
+    @media (min-width: $breakpoint-sm) {
+      display: block;
+    }
+  }
+  
+  &-icon {
+    max-width: none;
+
+    @media (min-width: $breakpoint-sm) {
+      margin-right: 40px;
+    }
+  }
+
+  &-lists {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: $container-width;
+    margin: 0 auto 40px auto;
+
+    @media (min-width: $breakpoint-sm) {
+      flex-direction: row;
+
+      > *:first-child {
+        margin-right: 24px;
+      }
+    }
+  }
+
+  &-list {
+    flex: 1 1 50%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    &--tablet {
+      display: none;
+
+      @media (min-width: $breakpoint-sm) {
+        display: block;
+      }
+    }
+
+    &-item {
+      margin-bottom: 30px;
+
+      &-title {
+        font-size: 2.3rem;
+        font-weight: $medium;
+        margin: 0 0 20px 0;
+      }
+
+      &-description {
+        color: $color-08;
+        line-height: 2.8rem;
+        margin: 0;
+      }
+
+      &-content {
+        border: 1px solid $color-14;
+        padding: 31px;
+
+        @media (min-width: $breakpoint-sm) {
+          padding: 31px 88px 31px 71px;
+        }
+      }
+
+      &--mobile {
+        @media (min-width: $breakpoint-sm) {
+          display: none;
+        }
+      }
+    }
+  }
+}

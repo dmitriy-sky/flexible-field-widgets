@@ -1,0 +1,17 @@
+{% from "components/image/image.twig" import image %}
+
+<div class="lhl-team">
+  <h2 class="lhl-team-title">{{ widget.title }}</h2>
+
+  {% for member in widget.team %}
+    <div class="lhl-team-member" lhl-element="animated">
+      {{ image({ src: Image(member.photo).src, alt: Image(member.photo).alt, classes: ["lhl-team-img lhl-team-img--desktop"] }) }}
+      <div class="lhl-team-info">
+        <h3 class="lhl-team-name">{{ member.name }}</h3>
+        <div class="lhl-team-position">{{ member.title }}</div>
+        {{ image({ src: Image(member.photo).src, alt: Image(member.photo).alt, classes: ["lhl-team-img lhl-team-img--mobile"] }) }}
+        <div class="lhl-team-biography">{{ member.biography }}</div>
+      </div>
+    </div>
+  {% endfor %}
+</div>

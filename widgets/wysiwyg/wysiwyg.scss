@@ -1,0 +1,53 @@
+.lhl-wysiwyg {
+  max-width: 640px;
+  margin: 25px auto;
+  font-family: $font-main;
+  padding: 0 20px;
+  box-sizing: border-box;
+  
+  @media (min-width: $breakpoint-sm) {
+    margin: 90px auto;
+  }
+
+  blockquote {
+    line-height: 2.8rem;
+    padding-left: 42px;
+    margin: 0;
+    position: relative;
+
+    &:before {
+      content: '';
+      width: 12px;
+      height: 100%;
+      max-height: 80px;
+      top: 5px;
+      background: $color-03;
+      left: 0;
+      position: absolute;
+      
+      @media (min-width: $breakpoint-sm) {
+        top: 2px;
+      }
+    }
+  }
+
+  & > p {
+    font-size: 1.8rem;
+    line-height: 2.8rem;
+    color: $color-08;
+    margin: 17px 0 17px 42px;
+  }
+
+  ul {
+    font-size: 1.8rem;
+    line-height: 3.4rem;
+    color: $color-01;
+    margin: 17px 0 17px 42px;
+    padding-left: 20px;
+    list-style: square;
+  }
+
+  .select-hide-first option[value=''] {
+    display: none;
+  }
+}

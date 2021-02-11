@@ -1,0 +1,32 @@
+{% from "components/image/image.twig" import image %}
+
+<div class="lhl-case-examples">
+  <div class="lhl-case-examples-title" {{ widget.colors.type == 'custom' ? 'style="background-color:'~ widget.colors.background ~'"' : '' }}>{{ widget.title }}</div>
+  <div class="lhl-case-examples-cards">
+    {% for card in widget.cards %}    
+      <div class="lhl-case-examples-card lhl-card" lhl-element="animated">
+       <div class="lhl-case-examples-img" style="background-image: url({{Image(card.image).src}})"></div>
+        <div class="lhl-case-examples-content" {{ card.colors.type == 'custom' ? 'style="background-color:'~ card.colors.background ~'"' : '' }}>
+          <p class="lhl-case-examples-content-item">
+            {{ card.first_label }}
+            {{ card.first_value }}
+          </p>
+          <p class="lhl-case-examples-content-item">
+            {{ card.second_label }}
+            ${{ card.second_value }}
+          </p>
+          <p class="lhl-case-examples-content-item">
+            {{ card.third_label }}
+            ${{ card.third_value }}
+          </p>
+          <p class="lhl-case-examples-content-last-value">
+            ${{ card.fourth_value }}
+          </p>
+          <p class="lhl-case-examples-content-last-label">
+            {{ card.fourth_label }}
+          </p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>

@@ -1,0 +1,69 @@
+{% from "components/image/image.twig" import image %}
+{% from "components/anchor/anchor.twig" import anchor %}
+{% from "components/input/input.twig" import input %}
+{% from "components/button/button.twig" import button %}
+
+{% set color_logo = Image(options.white_logo) %}
+{% set company_name = options.company_name %}
+{% set footer_disclaimer = options.footer_disclaimer %}
+{% set footer_copyright = options.footer_copyright %}
+{% set company_address = options.company_address %}
+{% set footer_form_text = options.footer_form_text %}
+{% set footer_form_handler = options.footer_form_handler %}
+
+<footer class="lhl-footer">
+  <div class="lhl-footer-container">
+    <div class="lhl-footer-top">
+      <a class="lhl-anchor lhl-footer-logo" href="{{ function('home_url', '/') }}">
+        {{ image({ src: color_logo.src, alt: company_name }) }}
+        {# {{ image({ src: logo_mark.src, alt: company_name }) }} #}
+      </a>
+    </div>
+    <div class="lhl-footer-middle lhl-footer-columns">
+      <ul class="lhl-footer-contacts lhl-footer-menu">
+        <li class="lhl-footer-menu-item">
+          {{ company_address }}
+        </li>
+        {% for menu_item in footer_left.items %}
+          <li class="lhl-footer-menu-item{{ menu_item.classes|join(' ') }}">
+            {{ anchor({ text: menu_item.title, href: menu_item.url, classes: menu_item.classes|merge(['lhl-footer-default-link']) }) }}
+          </li>
+        {% endfor %}
+      </ul>
+      {% for column in footer_main.items|batch(4) %}
+        <ul class="lhl-footer-links lhl-footer-menu">
+          {% for menu_item in column %}
+            <li class="lhl-footer-menu-item">
+              {{ anchor({ text: menu_item.title, href: menu_item.url, classes: menu_item.classes }) }}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endfor %}
+    </div>
+    <div class="lhl-footer-bottom  lhl-footer-columns">
+      <div class="lhl-footer-bottom-left">
+        <p class="lhl-footer-email-label">{{ footer_form_text }}</p>
+        <form class="lhl-footer-email" action="{{ footer_form_handler is empty ? '/get-started' : footer_form_handler }}" method="GET">
+          {{ input({ type: 'email', type: 'square', required: true, name: 'email', placeholder: 'Enter your email' }) }}
+          {{ button({ type: 'submit',  text: 'Sign up', style: 'square' }) }}
+        </form>
+      </div>
+      <div class="lhl-footer-bottom-right">
+        <ul class="lhl-footer-agreements lhl-footer-menu">
+          <li class="lhl-footer-menu-item lhl-footer-copyright">
+            {{ footer_copyright }}
+          </li>
+          {% for menu_item in footer_copy.items %}
+            <li class="lhl-footer-menu-item">
+              {{ anchor({ text: menu_item.title, href: menu_item.url, classes: menu_item.classes }) }}
+            </li>
+          {% endfor %}
+        </ul>
+        <div class="lhl-footer-disclaimer">
+          {{ footer_disclaimer }} 
+          {{ wp_footer }}
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,65 @@
+.lhl-two-columns {
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  width: 100%;
+  padding: 86px 20px 64px 20px;
+  box-sizing: border-box;
+
+  @media (min-width: $breakpoint-md) {
+    flex-direction: row;
+  }
+
+  &-column {
+    display: flex;
+    justify-content: center;
+
+    @media (min-width: $breakpoint-md) {
+      justify-content: flex-start;
+      flex: 1 1 50%;
+    }
+
+    ul {
+      padding-left: 17px;
+      margin: 0 0 20px 0;
+    }
+
+    h2 {
+      margin: 0 0 20px 0;
+
+      @media (min-width: $breakpoint-md) {
+        margin: 0 0 48px 0;
+      }
+
+      &:after {
+        content: "";
+        display: block;
+        height: 6px;
+        width: 80px;
+        background-color: $color-03;
+        margin-top: 15px;
+      }
+    }
+
+    p {
+      line-height: 2.8rem;
+      color: $color-08;
+      margin: 0 0 25px 0;
+    }
+
+    &--left {
+      @media (min-width: $breakpoint-md) {
+        margin-right: 61px;
+        justify-content: flex-end;
+      }
+    }
+
+    &-inner {
+      width: 100%;
+
+      @media (min-width: $breakpoint-md) {
+        max-width: 410px;
+      }
+    }
+  }
+}

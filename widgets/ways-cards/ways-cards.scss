@@ -1,0 +1,105 @@
+.lhl-ways-cards {
+  font-family: $font-main;
+  padding: 25px 20px 5px;
+  background-color: $color-06;
+
+  @media (min-width: $breakpoint-sm) {
+    padding: 60px 20px 5px;
+  }
+  
+  &-title {
+    text-align: center;
+    font-size: 4.1rem;
+    line-height: 5.2rem;
+    max-width: 750px;
+    margin: 0 auto;
+
+    @media (min-width: $breakpoint-sm) {
+      margin-bottom: 60px;
+    }
+  }
+
+  &-card {
+    max-width: 750px;
+    margin: 40px auto;
+    padding: 48px 52px;
+    background-color: $color-02;
+    box-shadow: 0 2px 4px $color-07;
+    box-sizing: border-box;
+    position: relative;
+
+    @media (min-width: $breakpoint-sm) {
+      margin: 80px auto;
+    }
+
+    &-top {
+      background-color: $color-06;
+      padding: 30px;
+      margin: 0;
+      text-align: center;
+      font-size: 2.4rem;
+    }
+
+    &-title {
+      font-size: 3.4rem;
+      max-width: 340px;
+      margin: 0 auto;
+      font-weight: $medium;
+      line-height: 4.2rem;
+    }
+  }
+
+  &-image {
+    position: absolute;
+    width: 52px;
+    height: 52px;
+    background: $color-03;
+    border-radius: 50%;
+    top: -26px;
+    display: flex;
+    left: calc(50% - 26px);
+    justify-content: center;
+    align-items: center;
+  }
+
+  &-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+  }
+
+  &-content {
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: $breakpoint-sm) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    a {
+      color: $color-12;
+      font-weight: 500;
+    }
+
+    &-item {
+      text-align: center;
+      color: $color-08;
+      font-size: 1.6rem;
+      line-height: 2.4rem;
+
+      @media (min-width: $breakpoint-sm) {
+        width: 43%;
+      }
+    }
+
+    &-title {
+      text-transform: uppercase;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid;
+      color: $color-01;
+    }
+  }
+}

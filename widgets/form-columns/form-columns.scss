@@ -1,0 +1,96 @@
+.lhl-form-columns {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: 100%;
+
+  @media (min-width: $breakpoint-md) {
+    flex-direction: row;
+  }
+
+  &-column {
+    flex: 1 1 50%;
+    line-height: 3rem;
+
+    ul {
+      margin: 0 0 42px 0;
+      padding-left: 17px;
+      list-style: square;
+    }
+
+    form {
+      p:not(:last-child) {
+        margin-bottom: 24px;
+      }
+    }
+
+    h2 {
+      margin: 18px 0;
+      line-height: normal;
+
+      @media (min-width: $breakpoint-md) {
+        margin: 0 0 48px 0;
+      }
+    }
+
+    p {
+      margin: 0 0 20px 0;
+    }
+
+    &--left {
+      display: flex;
+      background-color: $color-02;
+      z-index: 1;
+
+      @media (min-width: $breakpoint-md) {
+        justify-content: flex-end;
+
+        p {
+          max-width: 457px;
+          color: $color-08;
+        }
+      }
+    }
+
+    &--left &-inner {
+      padding: 20px;
+      
+      @media (min-width: $breakpoint-md) {
+        padding: 50px;
+        max-width: 690px;
+      }
+
+      @media (min-width: $breakpoint-lg) {
+        padding: 82px 190px 82px 100px;
+      }
+    }
+
+    &--right {
+      @media (min-width: $breakpoint-md) {
+        margin-right: -200px;
+      }
+
+      h2 {
+        margin: 0 0 31px 0;
+      }
+
+      p {
+        color: $color-01;
+      }
+    }
+
+    &--right &-inner {
+      padding: 20px;
+
+      @media (min-width: $breakpoint-md) {
+        padding: 50px;
+        margin-right: 200px;
+        max-width: 612px;
+      }
+
+      @media (min-width: $breakpoint-lg) {
+        padding: 82px 100px 82px 100px;
+      }
+    }
+  }
+}

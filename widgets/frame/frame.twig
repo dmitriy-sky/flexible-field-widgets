@@ -1,0 +1,17 @@
+{% from "components/image/image.twig" import image %}
+
+<div class="lhl-frame lhl-frame-{{ widget.background }}" {{ widget.background is not empty ? 'style="background-color:'~ widget.background ~'"' : '' }}>
+  <div class="lhl-frame-container">
+    <div class="lhl-frame-left lhl-animated-left" lhl-element="animated">
+      <div class="lhl-frame-description">
+        {{ widget.left }}
+      </div>
+      {{ image({ src: Image(widget.image).src, alt: Image(widget.image).alt, classes: ["lhl-frame-img"] }) }}
+    </div>
+    <div class="lhl-frame-right lhl-animated-right" lhl-element="animated">
+      <div class="lhl-frame-content" {{ widget.card_background is not empty ? 'style="background-color:'~ widget.card_background ~'"' : '' }}>
+        {{ widget.right }}
+      </div>
+    </div>
+  </div>
+</div>

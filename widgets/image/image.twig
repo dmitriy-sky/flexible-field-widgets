@@ -1,0 +1,10 @@
+{% from "components/image/image.twig" import image %}
+
+{% if widget.background.type == 'custom' %}
+  {% set bg_color = 'style="background-color:'~ widget.background.color ~'"' %}
+{% endif %}
+
+<div class="lhl-image" {{ bg_color }} lhl-element="animated">
+    {% set img = Image(widget.image) %}
+    {{ image({ src: img.src, alt: img.alt, classes: ["lhl-image-img"] }) }}
+</div>

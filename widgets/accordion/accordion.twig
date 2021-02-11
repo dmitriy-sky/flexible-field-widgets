@@ -1,0 +1,29 @@
+<div class="lhl-accordion" lhl-element="accordion" {{ widget.left_background is not empty ? 'style="background-color:'~ widget.left_background ~'"' : '' }}>
+  <div class="lhl-accordion-left lhl-animated-left" lhl-element="animated">
+    <div class="lhl-accordion-left-description">
+      {{ widget.left }}
+    </div>
+  </div>
+  <div class="lhl-accordion-right lhl-animated-right" lhl-element="animated" {{ widget.right_background is not empty ? 'style="background-color:'~ widget.right_background ~'"' : '' }}>
+    <div class="lhl-accordion-right-description">
+      {{ widget.right }}
+    </div>
+    <ul class="lhl-accordion-right-list">
+      {% for item in widget.items %}
+       {% if loop.first %}
+          <li lhl-element="accordion-item" class="lhl-accordion-right-list-item expand">
+            <div class="lhl-accordion-btn"></div>
+            <h4 class="lhl-accordion-right-list-title"> {{ item.title }} </h4>
+            <p class="lhl-accordion-right-list-text"> {{ item.text }} </p>
+          </li>
+        {% else %}
+          <li lhl-element="accordion-item" class="lhl-accordion-right-list-item">
+            <div class="lhl-accordion-btn"></div>
+            <h4 class="lhl-accordion-right-list-title"> {{ item.title }} </h4>
+            <p class="lhl-accordion-right-list-text"> {{ item.text }} </p>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+</div>

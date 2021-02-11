@@ -1,0 +1,12 @@
+{% from "components/image/image.twig" import image %}
+
+<div class="lhl-image-columns lhl-image-columns-{{ widget.align }}" lhl-element="animated" {{ widget.colors.type == 'custom' ? 'style="background-color:'~ widget.colors.background ~'"' : '' }}>
+  <div class="lhl-image-columns-content">
+    <div class="lhl-image-columns-image lhl-animated-left">
+      <div class="lhl-image-columns-img" style="background-image: url({{Image(widget.image).src}})"></div>
+    </div>
+    <div class="lhl-image-columns-description lhl-animated-right">
+      {{ widget.content }}
+    </div>
+  </div>
+</div>

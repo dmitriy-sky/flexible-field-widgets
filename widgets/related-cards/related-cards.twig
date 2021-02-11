@@ -1,0 +1,35 @@
+{% from "components/image/image.twig" import image %}
+{% from "components/anchor/anchor.twig" import anchor %}
+
+{% if related.background.type == 'custom' %}
+  {% set color = 'style="background-color:'~ related.background.color ~'"' %}
+{% endif %}
+
+<div class="lhl-related-cards" {{ color }}>
+  <div class="lhl-related-cards-top">
+    <h2 class="lhl-related-cards-title">
+      {{ widget.title }}
+    </h2>
+    <div class="lhl-related-cards-description">
+      {{ widget.description }}
+    </div>
+  </div>
+  <div class="lhl-related-cards-cards">
+    {% for post in Post(widget.cards) %}
+      <div class="lhl-related-cards-card lhl-card" lhl-element="animated">
+        {% set img = Image(post.hero_image) %}
+        {{ image({ src: img.src, alt: img.alt, classes: ["lhl-related-cards-card-img"] }) }}
+        <div class="lhl-related-cards-card-content">
+          <h4 class="lhl-related-cards-card-title">
+            {{ post.title }}
+          </h4>
+          <p class="lhl-related-cards-card-text">
+            {{ post.text }}
+          </p>
+          {% set cta_label = 'Read more' %}
+          {{ anchor({ text: cta_label, href: post.link }) }}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>

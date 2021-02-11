@@ -1,0 +1,33 @@
+{% from "components/image/image.twig" import image %}
+{% from "components/anchor/anchor.twig" import anchor %}
+
+{% if widget.background.type == 'custom' %}
+  {% set color = 'style="background-color:'~ widget.background.color ~'"' %}
+{% endif %}
+
+<div class="lhl-resources-cards" {{ color }}>
+  <div class="lhl-resources-cards-top">
+    <h2 class="lhl-resources-cards-title">
+      {{ widget.title }}
+    </h2>
+    <div class="lhl-resources-cards-description">
+      {{ widget.description }}
+    </div>
+  </div>
+  <div class="lhl-resources-cards-cards">
+    {% for card in widget.cards %}
+      <div class="lhl-resources-cards-card lhl-card" lhl-element="animated">
+        {{ image({ src: Image(card.image).src, alt: Image(card.image).alt, classes: ["lhl-resources-cards-card-img"] }) }}
+        <div class="lhl-resources-cards-card-content">
+          <h4 class="lhl-resources-cards-card-title">
+            {{ card.title }}
+          </h4>
+          <p class="lhl-resources-cards-card-text">
+            {{ card.text }}
+          </p>
+          {{ anchor({ text: card.link.title, href: card.link.url }) }}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>

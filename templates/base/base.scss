@@ -1,0 +1,12 @@
+.lhl-base {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  padding-top: $header-height-xsm;
+  font-size: 1.8rem;
+
+  @media (min-width: $breakpoint-md) {
+    padding-top: $header-height-md;
+  }
+}

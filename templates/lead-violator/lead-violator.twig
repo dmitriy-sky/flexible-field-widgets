@@ -1,0 +1,15 @@
+{% from "components/input/input.twig" import input %}
+{% from "components/button/button.twig" import button %}
+
+{% if post.meta('lead_violator_active') == '1' and get_active_site(post.site, post.post_name, post.post_type) != 'fp' %}
+  <div class="lhl-lead-violator active" lhl-element="lead-violator">
+    <div class="lhl-lead-violator-container">
+      <h2 class="lhl-lead-violator-text">{{ post.meta('lead_violator_text') }}</h2>
+      <form class="lhl-lead-violator-form" action="/get-started" method="GET">
+        {{ input({ type: 'email', name: 'email', classes: ['lhl-lead-violator-input'], required: true, placeholder: post.meta('lead_violator_placeholder') }) }}
+        {{ button({ type: 'submit',  text: post.meta('lead_violator_cta_label') }) }}
+      </form>
+    </div>
+  </div>
+{% endif %}
+

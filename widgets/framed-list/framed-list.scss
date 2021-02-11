@@ -1,0 +1,151 @@
+.lhl-framed-list {
+  width: 100%;
+  padding: 10px 0;
+
+  @media (min-width: $breakpoint-sm) {
+    padding: 50px 0;
+  }
+
+  &-Gray {
+    background-color: $color-09;
+
+    .lhl-frame-content {
+      background-color: $color-02;
+    }
+  }
+
+  &-container {
+    display: flex;
+    flex-direction: column;
+    max-width: $container-width;
+    margin: 0 auto;
+
+    @media (min-width: $breakpoint-md) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &-left {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+
+    @media (min-width: $breakpoint-md) {
+      max-width: 490px;
+      margin-top: 60px;
+      width: 49%;
+    }
+  }
+
+  &-right {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    position: relative;
+    z-index: 0;
+
+    @media (min-width: $breakpoint-md) {
+      width: 50.6%;
+      max-width: 600px;
+    }
+  }
+
+  &-description {
+    font-size: 1.8rem;
+    line-height: 2.8rem;
+
+    @media (min-width: $breakpoint-md) {
+      max-width: 490px;
+    }
+  }
+
+  &-title {
+    font-size: 4.1rem;
+    margin-bottom: 30px;
+  }
+
+  &-content {
+    padding: 20px;
+    background-color: $color-09;
+    margin: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.13);
+    
+    &:before {
+      content: '';
+      width: 92px;
+      height: 80px;
+      position: absolute;
+      display: inline-block;
+      background-color: $color-03;
+      left: 8px;
+      top: 8px;
+      z-index: -1;
+    }
+
+    @media (min-width: $breakpoint-md) {
+      padding: 32px 68px;
+    }
+
+    strong {
+      font-size: 1.8rem;
+      line-height: 2.4rem;
+      font-weight: $bold;
+      margin: 20px 0;
+      color: $color-01;
+    }
+
+    ul {
+      font-size: 1.8rem;
+      line-height: 2.8rem;
+      color: $color-01;
+      margin: 20px 0;
+      padding-left: 20px;
+      list-style-type: square;
+
+      li {
+        margin: 10px 0;
+      }
+    }
+
+    h2 {
+      font-size: 4.1rem;
+      margin-bottom: 30px;
+    }
+
+    p {
+      font-size: 1.8rem;
+      line-height: 2.8rem;
+      color: $color-08;
+      margin: 20px 0;
+    }
+  }
+
+  &-item {
+    display: flex;
+  }
+
+  &-icon {
+    border-radius: 50%;
+    margin-right: 20px;
+    font-size: 2.3rem;
+    width: 37px;
+    height: 37px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $color-03;
+  }
+
+  &-item-title {
+    font-size: 2.3rem;
+    margin: 3px 0 10px 0;
+    font-weight: $medium;
+  }
+
+  &-item-description {
+    p {
+      margin-top: 0;
+    }
+  }
+}

@@ -1,0 +1,223 @@
+.lhl-footer {
+  background-color: $color-01;
+  color: $color-02;
+  font-family: $font-main;
+  font-size: 1.2rem;
+  
+  &-menu {
+    list-style: none;
+    padding: 0;
+    justify-content: end;
+  }
+
+  &-link,
+  .lhl-anchor {
+    color: $color-02;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  
+  &-container {
+    max-width: 1020px;
+    padding: 30px 15px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+
+    @media (min-width: $breakpoint-sm) {
+      padding: 30px 60px 60px;
+    }
+  }
+  
+  &-top {
+    margin-bottom: 25px;
+    display: flex;
+    width: 100%;
+  }
+
+  &-logo {
+    display: flex;
+
+    .lhl-image {
+      max-width: 283px;
+      width: 100%;
+      min-height: 60px;
+      object-fit: contain;
+    }
+  }
+  
+  &-columns {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    flex-direction: column;
+    
+    @media (min-width: $breakpoint-sm) {
+      margin-left: 70px;
+    }
+  }
+
+  &-agreements {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    
+    .lhl-footer-menu-item {
+      margin-bottom: 10px;
+
+      &:nth-child(2) {
+        text-transform: uppercase;
+        
+        @media (min-width: $breakpoint-sm) {
+          flex: 0 0 22%;
+          margin-right: 10px;
+        }
+      }
+      
+      &:nth-child(3) {
+        text-transform: uppercase;
+      }
+      
+      @media (min-width: $breakpoint-sm) {
+        margin-bottom: 0;
+      }
+    }
+    
+    @media (min-width: $breakpoint-sm) {
+      flex-direction: row;
+    }
+    
+    @media (min-width: $breakpoint-md) {
+      margin-top: 0;
+    }
+  }
+
+  &-links {
+    .lhl-footer-menu-item {
+      text-transform: uppercase;
+
+      &:not(:last-child) {
+        margin-bottom: 13px;
+      }
+    }
+  }
+  
+  &-contacts {
+    @media (min-width: $breakpoint-sm) {
+      flex: 0 0 calc(33.33% + 40px);
+    }
+    
+    .lhl-footer-menu-item:not(:last-child) {
+      margin-bottom: 19px;
+    }
+  }
+
+  &-middle {
+    margin-bottom: 20px;
+    
+    .lhl-footer-links:not(:first-child) {
+
+      @media (min-width: $breakpoint-sm) {
+        flex: 0 0 calc(33.33% - 20px);
+      }
+    }
+
+    @media (min-width: $breakpoint-sm) {
+      flex-direction: row;
+    }
+  }
+
+  &-default-link:not(.highlighted) {
+    font-size: 1.8rem;
+    color: $color-02;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &-default-link.highlighted {
+    font-size: 1.4rem;
+    color: $color-03;
+    border-bottom: 1px solid;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: none;
+      border-bottom: none;
+    }
+  }
+  
+  &-bottom {
+    @media (min-width: $breakpoint-md) {
+      flex-direction: row;
+      margin-top: 15px;
+    }
+    
+    &-left {
+      @media (min-width: $breakpoint-sm) {
+        flex: 0 0 33.33%;
+      }
+
+      @media (min-width: $breakpoint-md) {
+        margin-right: 40px;
+      }
+    }
+    
+    &-right {
+      @media (min-width: $breakpoint-sm) {
+        flex: 0 0 calc(66.66% - 40px);
+      }
+    }
+  }
+  
+  &-email {
+    display: flex;
+    margin-top: 18px;
+    
+    &-label {
+      font-size: 1.1rem;
+      margin: 0;
+    }
+    
+    &-input, 
+    .lhl-input {
+      max-width: 210px;
+      &::placeholder {
+        color: $color-04;
+        font-style: italic;
+      }
+    }
+    
+    &-button,
+    .lhl-button {
+      transition: 0.3s;
+      white-space: nowrap;
+
+      &:hover {
+        background-color: $color-05;
+        color: $color-02;
+      }
+    }
+  }
+  
+  &-copyright {
+    font-size: 1.1rem;
+    
+    @media (min-width: $breakpoint-sm) {
+      flex: 0 0 48%;
+      margin-right: 10px;
+    }
+  }
+
+  &-disclaimer {
+    
+    a {
+      color: $color-02;
+    }
+  }
+}
